@@ -6,6 +6,7 @@ team 1\_2
 
 ``` r
 library(tidyverse) 
+library(lubridate)
 ```
 
 ### Exercise 1
@@ -41,8 +42,16 @@ df <- tribble(
 ### Exercise 2
 
 ``` r
-# add code here
+pivot_longer(df, c("mask_count", "nomask_count"),
+             names_to = "mask_status",
+             values_to = "count") %>%
+  mutate(date <- mdy(date)) %>%
+  ggplot(mapping = aes(x = date, y = count, color = mask_status, group = mask_status)) +
+  geom_line() +
+  theme(axis.text.x = element_text(angle = 90))
 ```
+
+![](lab-06_files/figure-gfm/better-viz-1.png)<!-- -->
 
 ### Exercise 3
 

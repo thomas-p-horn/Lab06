@@ -8,6 +8,7 @@ output: github_document
 
 ```{r load-packages, message=FALSE}
 library(tidyverse) 
+library(lubridate)
 ```
 
 
@@ -39,13 +40,20 @@ df <- tribble(
   "8/1/2020", 16.1, 9.1,
   "8/2/2020", 15.8, 8.9,
   "8/3/2020", 15.9, 9.1)
+
 ```
 
 
 ### Exercise 2
 
 ```{r better-viz}
-# add code here
+pivot_longer(df, c("mask_count", "nomask_count"),
+             names_to = "mask_status",
+             values_to = "count") %>%
+  mutate(date <- mdy(date)) %>%
+  ggplot(mapping = aes(x = date, y = count, color = mask_status, group = mask_status)) +
+  geom_line() +
+  theme(axis.text.x = element_text(angle = 90))
 ```
 
 
