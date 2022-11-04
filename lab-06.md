@@ -1,6 +1,6 @@
 Lab 06 - Conveying the right message through visualisation
 ================
-team 1\_2
+team 1_2
 
 ### Load packages and data
 
@@ -55,7 +55,8 @@ pivot_longer(df, c("mask_count", "nomask_count"),
 
 ### Exercise 3
 
-*Add your narrative here.*
+Daily cases are higher in counties with mask mandates. This wasn’t
+obvious in the tweet.
 
 ### Exercise 4
 
